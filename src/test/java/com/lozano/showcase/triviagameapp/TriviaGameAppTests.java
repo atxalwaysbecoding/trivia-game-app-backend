@@ -1,10 +1,10 @@
-package com.lozano.showcase.trivia_game_app_backend;
+package com.lozano.showcase.triviagameapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TriviaGameAppBackendApplicationTests {
+class TriviaGameAppTests {
 
     @Test
     void contextLoads() {

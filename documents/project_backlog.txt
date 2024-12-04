@@ -1,5 +1,10 @@
 Todo:
-
+--Enforce strict character entries on participant names (a-zA-Z).
+--Don't allow quiz updates or deletes with an open game against it.
+--Parse / save participants list with delimiter.
+--Police correct answer index for each question with quiz save/create.
+--Police ask order index with quiz save/create.
+--Participant name should be limited to 15 characters
 
 Other:
 
