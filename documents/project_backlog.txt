@@ -5,6 +5,7 @@ Todo:
 --Police correct answer index for each question with quiz save/create.
 --Police ask order index with quiz save/create.
 --Participant name should be limited to 15 characters
+--Validate that the quiz author ID matches the token's user ID with Quiz edits
 
 Other:
 

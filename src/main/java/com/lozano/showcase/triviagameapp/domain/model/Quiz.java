@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,7 +30,7 @@ public class Quiz {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "QUIZ_ID", referencedColumnName = "QUIZ_ID")
-    private Set<Question> questions;
+    private List<Question> questions;
 
     @CreationTimestamp
     @Column(name = "CREATE_DATETIME")

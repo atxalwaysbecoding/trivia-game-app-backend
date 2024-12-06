@@ -49,5 +49,9 @@ public class Game {
         return new ArrayList<>();
     }
 
-    //todo set participants
+    @Transient
+    public void setParticipantsFromList(List<String> parsedList){
+        //todo
+    }
+
 }

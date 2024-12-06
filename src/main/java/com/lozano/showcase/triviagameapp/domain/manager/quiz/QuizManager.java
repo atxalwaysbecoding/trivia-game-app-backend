@@ -10,11 +10,11 @@ public interface QuizManager {
 
     List<Quiz> getAllQuizzesByAuthorId(String id);
 
-    Quiz createQuiz(Quiz quiz);
+    Quiz createQuiz(Quiz quiz, String userId);
 
-    Quiz updateQuiz(Quiz quiz);
+    Quiz updateQuiz(Quiz quiz, String userId);
 
-    Quiz deleteQuizById(String id);
+    boolean deleteQuizById(String id, String userId);
 
 
 
