@@ -3,6 +3,7 @@ package com.lozano.showcase.triviagameapp.api.controller;
 import com.lozano.showcase.triviagameapp.api.model.Quiz;
 import com.lozano.showcase.triviagameapp.api.transformer.QuizTranslator;
 import com.lozano.showcase.triviagameapp.domain.manager.quiz.QuizManager;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +29,14 @@ public class QuizController {
     }
 
     @PostMapping
-    public ResponseEntity createQuiz(@RequestBody Quiz quiz){
+    public ResponseEntity createQuiz(@RequestBody @Valid Quiz quiz){
         //todo - get and set userId
         com.lozano.showcase.triviagameapp.domain.model.Quiz domainQuiz = this.quizManager.createQuiz(this.quizTranslator.toDomainModel(quiz), "userId123");
         return ResponseEntity.ok(this.quizTranslator.toApiModel(domainQuiz));
     }
 
     @PutMapping
-    public ResponseEntity updateQuiz(@RequestBody Quiz quiz){
+    public ResponseEntity updateQuiz(@RequestBody @Valid Quiz quiz){
         //todo - get and set userId
         com.lozano.showcase.triviagameapp.domain.model.Quiz domainQuiz = this.quizManager.updateQuiz(this.quizTranslator.toDomainModel(quiz), "userId123");
         return ResponseEntity.ok(this.quizTranslator.toApiModel(domainQuiz));

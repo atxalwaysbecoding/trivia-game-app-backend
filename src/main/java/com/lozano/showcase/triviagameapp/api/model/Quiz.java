@@ -15,6 +15,8 @@ public class Quiz {
 
     private String id;
 
+    @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "title must not contain special characters")
+    @Size(max = 60, message = "title exceeds max length")
     private String authorId;
 
     @NotBlank(message = "title cannot be blank")
