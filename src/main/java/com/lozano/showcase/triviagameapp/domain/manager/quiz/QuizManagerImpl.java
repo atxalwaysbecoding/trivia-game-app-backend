@@ -7,6 +7,7 @@ import com.lozano.showcase.triviagameapp.domain.model.Question;
 import com.lozano.showcase.triviagameapp.domain.model.Quiz;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -15,10 +16,12 @@ import java.util.*;
 @Service
 public class QuizManagerImpl implements QuizManager {
 
+    private Integer maxQuestionsListSize;
     private QuizRepository quizRepository;
 
     @Autowired
-    public QuizManagerImpl(QuizRepository quizRepository) {
+    public QuizManagerImpl(@Value("${quiz.question.list.maxSize}") Integer maxQuestionsListSize, QuizRepository quizRepository) {
+        this.maxQuestionsListSize = maxQuestionsListSize;
         this.quizRepository = quizRepository;
     }
 
@@ -53,6 +56,18 @@ public class QuizManagerImpl implements QuizManager {
         this.validateUpdateOrDeleteRequest(id, userId);
         this.quizRepository.deleteById(id);
         return true;
+    }
+
+    private void validateNumberOfQuestions(Quiz quiz){
+        if (quiz!=null) {
+            if (quiz.getQuestions()==null || quiz.getQuestions().isEmpty()) {
+                ExceptionUtils.throwException(new AppException(ExceptionEnum.QZ1003, "quiz questions list is null or empty"));
+            } else if (quiz.getQuestions().size()<1 || quiz.getQuestions().size()>this.maxQuestionsListSize){
+                ExceptionUtils.throwException(new AppException(ExceptionEnum.QZ1004, "quiz questions list is not an allowed size"));
+            }
+        } else {
+            ExceptionUtils.throwException(new AppException(ExceptionEnum.UN5002, "null quiz provided"));
+        }
     }
 
     private void validateAnswerAndOrderIndex(Quiz quiz){

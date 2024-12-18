@@ -4,5 +4,7 @@ public enum GameStateEnum {
 
     CREATED,
     INPROGRESS,
-    CLOSED
+    COMPLETE,
+    CANCELLED
+
 }

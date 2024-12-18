@@ -22,6 +22,9 @@ public class Game {
     @Column(name = "HOST_USER_ID")
     private String hostUserId;
 
+    @Column(name = "JOIN_ID")
+    private String joinId;
+
     @Column(name = "QUIZ_ID")
     private String quizId;
 
@@ -40,12 +43,12 @@ public class Game {
     @Column(name = "ENDED_DATETIME")
     private LocalDateTime endedDateTime;
 
-    @Column(name = "PARTICIPANTS_LIST")
-    private String participants;
+    @Column(name = "PARTICIPANT_NAMES")
+    private String participantNames;
 
     @Transient
-    public List<String> getParticipantsAsList(){
-        List<String> parsedList = Arrays.asList(this.participants.split("\\|"));
+    public List<String> getParticipantNamesAsList(){
+        List<String> parsedList = Arrays.asList(this.participantNames.split("\\|"));
         return new ArrayList<>();
     }
 

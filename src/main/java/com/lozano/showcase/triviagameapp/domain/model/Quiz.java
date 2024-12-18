@@ -40,4 +40,7 @@ public class Quiz {
     @Column(name = "MODIFIED_DATETIME")
     private LocalDateTime lastModifiedDateTime;
 
+    @Column(name = "LOCKED_FROM_EDIT")
+    private boolean isLocked;
+
 }
